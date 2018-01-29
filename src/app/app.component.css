@@ -1,0 +1,185 @@
+body {
+  background: #fff;
+  margin: 0;
+  color: #555;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+#wrapper {
+  position: relative;
+  /*z-index: 10;*/
+  background: #f6f6f6;
+  box-shadow: 0px 0px 10px #cfcfcf;
+}
+
+/*----- Header -----*/
+
+header {
+  background: #fff;
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+/*----- Feedback mobile Devices starts -----*/
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .fback li p {
+    display: block;
+    width: 80%
+  }
+}
+
+/*----- Feedback Mobile Devices Ends -----*/
+
+#ai_logo {
+  /* background-image:url(../src/assets/AIANR_Logo.jpg); */
+  background-repeat: no-repeat;
+
+}
+
+.section-header {
+  /* margin-bottom: 20px; */
+  text-align: center;
+  position: relative;
+  border-bottom: 1px solid #333;
+}
+
+.section-body {
+  margin-bottom: 20px;
+}
+
+/*  FAQ Template styles starts*/
+
+#faq_content {
+  border-top: 7px solid #1b3065;
+  background: #fcfcfc;
+  /* min-height: -webkit-fill-available; */
+}
+
+#faq_content .no_pad {
+  padding: 0px;
+}
+
+#faq_content table th {
+  background-color: #eee;
+  padding: 7px 4px;
+  text-align: left;
+}
+
+#faq_content table td {
+  padding: 7px 4px;
+  vertical-align: middle;
+}
+
+#faq_content table td:first-child,
+#faq_content table th:first-child {
+  text-align: center;
+}
+
+.faq_row {
+  /*  border-bottom: 1px dotted #bdbdbd; */
+  margin: 10px 0;
+  overflow: hidden;
+  line-height: 20px;
+}
+
+.faq_row h3 {
+  color: #3a3a3a;
+  font-size: 13px;
+  font-weight: bold;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.faq_row p {
+  /*   margin: 0; */
+  text-align: justify;
+}
+
+.faq_list {
+  margin: 10px 0px;
+  line-height: 20px;
+}
+
+.faq_list>li {
+  border-bottom: 1px dotted #bdbdbd;
+  padding: 10px 0;
+}
+
+.faq_list h3 {
+  color: #3a3a3a;
+  font-size: 13px;
+  font-weight: bold;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.faq_list p {
+  margin: 0;
+  text-align: justify;
+}
+
+/*  FAQ Template styles Ends*/
+
+/*----- Footer Section Starts ----- */
+
+#footer_area {
+  background: #1b3065;
+  border-top: 3px solid #1b75bc;
+  overflow: hidden;
+  padding: 5px;
+}
+
+#footer p {
+  color: #fff;
+  margin: 10px 0 0;
+}
+
+.footbg {
+  background: #535353;
+  overflow: hidden;
+}
+
+#footer_links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+}
+
+#footer_links li {
+  float: left;
+  margin: 0 10px 0 0;
+  padding: 5px 0;
+}
+
+#footer_links li:last-child {
+  margin-right: 0;
+  background: none;
+}
+
+#footer_links li a {
+  color: #fff;
+  padding: 0 10px 0 0;
+  margin: 3px 0 0;
+  display: block;
+}
+
+#footer_links li a:hover {
+  text-decoration: none;
+}
+
+#best_view {
+  background: #535353;
+  text-align: center;
+}
+
+#best_view p {
+  font-size: 11px;
+  margin: 0;
+  padding: 5px;
+  color: #eee;
+}
+
+/*----- Footer Section Ends -----*/

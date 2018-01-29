@@ -1,0 +1,40 @@
+<form>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="form-group">
+      <label for="formGroupExampleInput">Type of Chart</label>
+      <select class="form-control col-lg-4" name="formGroupExampleInput" [(ngModel)]="propertySet.typeOfReport" (ngModelChange)='valueChange(propertySet)'>
+        <option value="1" selected="selected">
+          Vertical Bar chart
+        </option>
+        <option value="2">
+          Horizontal Bar chart
+        </option>
+        <option value="3">
+          Pie chart
+        </option>
+        <option value="4">
+          Advanced Pie chart
+        </option>
+        <option value="5">
+            Grid Pie chart
+          </option>
+      </select>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="form-group">
+      <label for="formGroupExampleInput2">Show legend</label>
+      <select class="form-control" [disabled]='(propertySet.typeOfReport==4 || propertySet.typeOfReport==5 )' name="formGroupExampleInput2" [(ngModel)]="propertySet.showLegend" (ngModelChange)='valueChange(propertySet)' placeholder="Another input">
+        <option value="1" selected="selected">
+          True
+        </option>
+        <option value="0">
+          False
+        </option>
+      </select>
+    </div>
+  </div>
+
+</div>
+</form>
