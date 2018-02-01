@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { reportInfo } from './data';
+import { reportInfo } from './sharedData/data';
 
 @Component({
   selector: 'app-root',

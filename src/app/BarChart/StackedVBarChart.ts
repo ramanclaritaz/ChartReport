@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
+import {Component,Input} from '@angular/core';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
-import {single, multi, _reportInfo, reportInfo} from '../data';
+import { _reportInfo } from '../sharedData/data';
 
 @Component({
   selector: 'StackedVBarChart',
@@ -22,10 +22,9 @@ import {single, multi, _reportInfo, reportInfo} from '../data';
   `
 })
 export class StackedVBarChart {
-  reportInfo: _reportInfo
+  @Input('reportInfo') reportInfo: _reportInfo
   constructor() {
-    this.reportInfo = reportInfo;
-    this.reportInfo.multi = multi;
+
   }
   onSelect(event) {
     console.log(event);

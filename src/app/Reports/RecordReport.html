@@ -1,0 +1,74 @@
+<div>
+  <div class="section-header">
+    <h3>{{reportInfo.title}}</h3>
+    <p>{{reportInfo.subTitle}}</p>
+  </div>
+  <table *ngIf="(paramId=='holidaylist')" class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>
+        S.No
+      </th>
+        <th>
+          Date
+        </th>
+        <th>
+          Descriptions
+        </th>
+        <th>
+          Location
+        </th>
+        <th>
+          Type of holiday
+        </th>
+        <th>
+          Finacial year
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let item of holiday let i=index'>
+        <td>{{i+1}}</td>
+        <td>{{item.holidayDate | date:'dd-MM-yyyy'}}</td>
+        <td>{{item.holidayDescriptions}}</td>
+        <td>{{item.holidayLocation}}</td>
+        <td>{{item.holidayType}}</td>
+        <td>{{item.finacialYear}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table *ngIf="(paramId=='attendance')" class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>
+          S.No
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Date
+        </th>
+        <th>
+          Intime
+        </th>
+        <th>
+          Outtime
+        </th>
+        <th>
+          Absent
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let item of holiday let i=index'>
+        <td>{{i+1}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.attendanceDate | date:'dd-MM-yyyy'}}</td>
+        <td>{{item.inTime}}</td>
+        <td>{{item.outTime}}</td>
+        <td>{{item.Absent}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

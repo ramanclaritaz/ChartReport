@@ -1,5 +1,5 @@
-import {Component, NgModule} from '@angular/core';
-import {single, multi, _reportInfo, reportInfo} from '../data';
+import { Component, NgModule, Input } from '@angular/core';
+import { _reportInfo } from '../sharedData/data';
 
 @Component({
   selector: 'PieChart',
@@ -18,10 +18,8 @@ import {single, multi, _reportInfo, reportInfo} from '../data';
   `
 })
 export class PieChart {
-  reportInfo: _reportInfo
+  @Input('reportInfo') reportInfo: _reportInfo
   constructor() {
-    this.reportInfo = reportInfo;
-    this.reportInfo.single = single;
   }
   onSelect(event) {
     console.log(event);

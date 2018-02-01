@@ -5,7 +5,7 @@
 /dist-server
 /tmp
 /out-tsc
-
+/src/app/sharedData
 # dependencies
 /node_modules
 

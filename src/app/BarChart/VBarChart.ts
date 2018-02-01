@@ -1,6 +1,6 @@
-import { Component } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { single, _reportInfo, reportInfo } from '../data';
+import { _reportInfo } from '../sharedData/data';
 
 @Component({
   selector: 'VBarChart',
@@ -22,10 +22,8 @@ import { single, _reportInfo, reportInfo } from '../data';
   `
 })
 export class VBarChart {
-  reportInfo: _reportInfo
+  @Input('reportInfo') reportInfo: _reportInfo
   constructor() {
-    this.reportInfo = reportInfo;
-    this.reportInfo.single = single;
   }
   onSelect(event) {
     console.log(event);

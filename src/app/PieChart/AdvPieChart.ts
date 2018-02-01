@@ -1,5 +1,5 @@
-import {Component, NgModule} from '@angular/core';
-import {single, multi, reportInfo, _reportInfo} from '../data';
+import {Component, NgModule,Input} from '@angular/core';
+import { _reportInfo } from '../sharedData/data';
 
 @Component({
   selector: 'AdvPieChart',
@@ -14,10 +14,8 @@ import {single, multi, reportInfo, _reportInfo} from '../data';
   `
 })
 export class AdvPieChart {
-  reportInfo: _reportInfo
+  @Input('reportInfo') reportInfo: _reportInfo
   constructor() {
-    this.reportInfo = reportInfo;
-    this.reportInfo.single = single;
   }
   onSelect(event) {
     console.log(event);
