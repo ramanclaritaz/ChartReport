@@ -11,6 +11,7 @@ import { jsPDF } from "jspdf";
 export class Property {
   @Input('propertyset') propertySet: _propertySet;
   @Output() propertyChange = new EventEmitter<_propertySet>();
+  @Output() exportChange=new EventEmitter<number>();
   //  @ViewChild
   constructor() {
 
@@ -18,6 +19,10 @@ export class Property {
   valueChange(event: _propertySet) {
     this.propertyChange.emit(event);
 
+  }
+  export(event:number)
+  {
+    this.exportChange.emit(event);
   }
   // GeneratePDF () {
   //   html2canvas(this.element.nativeElement, <html2canvas.Html2CanvasOptions>{

@@ -1,26 +1,33 @@
-import { Component, NgModule, Input, ViewChild } from '@angular/core';
-import { _reportInfo, PropertySet, _propertySet, sType, reportInfo } from '../sharedData/data';
+import { Component, NgModule, Input, ViewChild, ElementRef } from '@angular/core';
+import { _reportInfo, PropertySet, _propertySet, sType, reportInfo, typeOfExports } from '../sharedData/data';
 import { Property } from './Property';
 import { Router, ActivatedRoute } from '@angular/router';
 import { availableLeaves } from '../sharedData/availableLeaves';
 import { leaveAppliedStatus } from '../sharedData/leaveAppliedStatus';
+import { commonServices } from '../sharedData/common.service';
 
 
 @Component({
   selector: 'report',
-  templateUrl: "../Reports/SingleChartReport.html"
+  templateUrl: "../Reports/SingleChartReport.html",
+  providers: [commonServices]
 })
 export class ChartReport {
-
+  // @ViewChild('reportData') element: ElementRef;
   reportInfo: _reportInfo
   propertyValue: _propertySet
   params: any;
   constructor(
-    private router: Router, private route: ActivatedRoute
+    private router: Router, private route: ActivatedRoute, private commonservice: commonServices
   ) {
     this.params = this.route.params;
     this.propertyValue = PropertySet;
     this.propertyValue.typeOfReports = sType
+    this.propertyValue.graph = true;
+    this.propertyValue.typeOfExports = typeOfExports.filter((val) => {
+      if (val.graph == true)
+        return val;
+    });
     this.Oninit();
   }
   Oninit() {
@@ -29,7 +36,7 @@ export class ChartReport {
         case "availableleave":
           this.getAvailableLeave(val);
           break;
-          case "leavestatus":
+        case "leavestatus":
           this.getLeaveAppliedStatus(val);
           break;
       }
@@ -63,9 +70,13 @@ export class ChartReport {
     this.reportInfo.single = data;
   }
   propertyChange(event: _propertySet) {
-
     this.reportInfo.showLegend = (event.showLegend == 1 ? true : false);
-
+  }
+  exportChange(event:number)
+  {
+    if (event != 0) {
+      this.commonservice.Download(event, this.reportInfo.title)
+    }
   }
 
 

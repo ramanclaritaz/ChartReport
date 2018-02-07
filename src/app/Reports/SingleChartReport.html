@@ -1,5 +1,5 @@
 <div style="padding-top: 10px;">
-  <property-set [propertyset]='propertyValue' (propertyChange)="propertyChange($event)"></property-set>
+  <property-set [propertyset]='propertyValue' (propertyChange)="propertyChange($event)" (exportChange)="exportChange($event)"></property-set>
 </div>
 <div id="reportData">
   <div class="section-header">

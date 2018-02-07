@@ -1,6 +1,6 @@
 <form>
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-lg-3" *ngIf='propertySet.graph' >
       <div class="form-group">
         <label for="formGroupExampleInput">Type of Chart</label>
         <select class="form-control col-lg-4" name="formGroupExampleInput" [(ngModel)]="propertySet.typeOfReport" (ngModelChange)='valueChange(propertySet)'>
@@ -10,7 +10,7 @@
         </select>
       </div>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-3" *ngIf='propertySet.graph'>
       <div class="form-group">
         <label for="formGroupExampleInput2">Show legend</label>
         <select class="form-control" [disabled]='(propertySet.typeOfReport==4 || propertySet.typeOfReport==5 )' name="formGroupExampleInput2"
@@ -24,26 +24,16 @@
         </select>
       </div>
     </div>
-    <!-- <div class="col-lg-4">
+    <div class="col-lg-3">
       <div class="form-group">
-        <label for="formGroupExampleInput2">Export</label>
-        <select class="form-control" name="formGroupExampleInput3" [(ngModel)]="propertySet.typeOfExport" (ngModelChange)='valueChange(propertySet)'
-          placeholder="Another input">
-          <option value="0" selected="selected">
-            Select here...
-          </option>
-          <option value="1">
-            PDF
-          </option>
-          <option value="2">
-            JPG
-          </option>
-          <option value="3">
-            PNG
+        <label for="formGroupExampleInput3">Export</label>
+        <select class="form-control col-lg-4" name="formGroupExampleInput3" [(ngModel)]="propertySet.typeOfExport" (ngModelChange)='export(propertySet.typeOfExport)'>
+          <option *ngFor="let item of propertySet.typeOfExports" value={{item.id}}>
+            {{item.name}}
           </option>
         </select>
       </div>
-    </div> -->
+    </div>
 
   </div>
 </form>
