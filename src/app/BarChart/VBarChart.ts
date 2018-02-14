@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input,OnInit } from '@angular/core'
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { _reportInfo } from '../sharedData/data';
 
@@ -21,9 +21,14 @@ import { _reportInfo } from '../sharedData/data';
     </ngx-charts-bar-vertical>
   `
 })
-export class VBarChart {
+export class VBarChart implements OnInit {
   @Input('reportInfo') reportInfo: _reportInfo
   constructor() {
+
+  }
+  ngOnInit()
+  {
+    console.log(this.reportInfo);
   }
   onSelect(event) {
     console.log(event);

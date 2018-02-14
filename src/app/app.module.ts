@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FormsModule } from "@angular/forms";
 import { HttpModule } from '@angular/http';
+import { httpService } from "./httpService";
 
 
 import { AppComponent } from './app.component';
@@ -20,15 +21,16 @@ import { GridPieChart } from './PieChart/GridPieChart';
 import { ChartReport } from './Reports/SingleChartReport';
 import { Property } from './Reports/Property';
 import { MultiChartReport } from './Reports/MultiChartReport';
-import { DepartmentWise } from './Reports/DepartmentWise';
 import { RecordReport } from './Reports/RecordReport';
+import { timeOfficeService } from './sharedData/timeOffice.service';
+import { commonServices } from './sharedData/common.service';
+import { sharedData } from './sharedData/data';
 
 
 const appRoutes: Routes = [
-  { path: "departmentwise", component: DepartmentWise },
   { path: "holidaylist/:id", component: RecordReport },
   { path: "availableleave/:id", component: ChartReport },
-  { path: "leavestatus/:id", component: ChartReport },
+  { path: "leavestatus/:id/:fdate/:tdate", component: ChartReport },
   { path: "holidaylist", component: RecordReport },
   { path: "otstatus", component: MultiChartReport },
   { path: "attendance/:fdate/:tdate", component: RecordReport }
@@ -42,7 +44,6 @@ const appRoutes: Routes = [
     HBarChart,
     GroupHBarChart,
     GroupVBarChart,
-    DepartmentWise,
     StackedVBarChart,
     RecordReport,
     StackedHBarChart,
@@ -57,7 +58,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes), FormsModule
   ],
 
-  providers: [],
+  providers: [httpService,timeOfficeService,commonServices,sharedData],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+
+ }

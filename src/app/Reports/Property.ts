@@ -1,5 +1,5 @@
 import { Component, NgModule, Input, Output, EventEmitter } from '@angular/core';
-import { single, multi, _reportInfo, reportInfo, _propertySet, PropertySet } from '../sharedData/data';
+import { _propertySet } from '../sharedData/data';
 import * as html2canvas from 'html2canvas'
 import { ViewChild } from '@angular/core/src/metadata/di';
 import { jsPDF } from "jspdf";

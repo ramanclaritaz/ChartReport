@@ -10,8 +10,9 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class httpService {
-
+  headers:any;
   constructor( @Inject(Http) private http: Http) {
+    this.headers = new Headers();
   }
 
   private extractData(res: Response): Observable<any> {
@@ -33,7 +34,7 @@ export class httpService {
     return this.http.get(url, this.getRequestOptionArgs(options)).map(this.extractData).catch(this.handleError);
   }
 
-  public post(url: string, body: string, options?: RequestOptionsArgs): Observable<any> {
+  public post(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
     url = this.updateUrl(url);
     return this.http.post(url, body, this.getRequestOptionArgs(options)).map(this.extractData).catch(this.handleError);
   }
@@ -59,16 +60,7 @@ export class httpService {
     if (options.headers == null) {
       options.headers = new Headers();
     }
-    // var token = localStorage.getItem('token');
-
-
-    // if (token != undefined) {
-    //   options.headers.append('Authorization', 'Bearer ' + token);
-    // }
-    // // options.headers.append('Content-Type','application/x-www-form-urlencoded' );
-    // options.headers.append('Content-Type', 'application/json; charset=UTF-8');
-
-    // // options.headers.append('Content-Type','application/octet-stream' );
+    options.headers.append('Content-Type', 'application/json');
     options.headers.append('Access-Control-Allow-Origin', '*');
     return options;
   }

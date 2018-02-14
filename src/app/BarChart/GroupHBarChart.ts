@@ -1,6 +1,6 @@
-import { Component,Input } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { single, multi, reportInfo, _reportInfo } from '../sharedData/data';
+import { _reportInfo } from '../sharedData/data';
 
 @Component({
   selector: 'GroupHBarChart',
@@ -24,7 +24,9 @@ import { single, multi, reportInfo, _reportInfo } from '../sharedData/data';
 export class GroupHBarChart {
   @Input('reportInfo') reportInfo: _reportInfo
   constructor() {
+
   }
+
   onSelect(event) {
     console.log(event);
   }

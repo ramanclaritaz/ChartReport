@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { reportInfo } from './sharedData/data';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +10,6 @@ export class AppComponent {
   reportInfo: any;
 
   constructor() {
-    this.reportInfo = reportInfo;
 
   }
 }

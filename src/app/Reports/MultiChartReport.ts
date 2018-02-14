@@ -1,8 +1,7 @@
 import { Component, NgModule, Input, ViewChild } from '@angular/core';
-import { single, multi, _reportInfo, reportInfo, PropertySet, _propertySet, mType, sType, typeOfExports } from '../sharedData/data';
+import {  _reportInfo, _propertySet, sharedData } from '../sharedData/data';
 import { Property } from './Property';
 import { Router, ActivatedRoute } from '@angular/router';
-import { workedOTStatus } from '../sharedData/workedOverTimeStatus';
 import { commonServices } from '../sharedData/common.service';
 
 
@@ -16,15 +15,13 @@ export class MultiChartReport {
   propertyValue: _propertySet
   // @Input()
   params: any;
-  constructor(private router: Router, private route: ActivatedRoute,private commonservice:commonServices) {
+  constructor(private router: Router, private route: ActivatedRoute,private commonservice:commonServices,private sharedData:sharedData) {
     this.params = this.route.params;
-    this.propertyValue = PropertySet;
-    this.propertyValue.typeOfReports = mType
-    this.propertyValue.graph = true;
-    this.propertyValue.typeOfExports = typeOfExports.filter((val) => {
-      if (val.graph == true)
-        return val;
-    });
+    this.propertyValue = this.sharedData.PropertySet;
+    this.propertyValue.typeOfReports = this.sharedData.ListsType
+    this.propertyValue.graph = false;
+    this.propertyValue.typeOfExports = this.sharedData.ListTypeOfExport;
+    this.reportInfo = this.sharedData.ReportInfo;
     this.Oninit();
   }
   Oninit() {
@@ -38,9 +35,7 @@ export class MultiChartReport {
 
   }
   getWorkedStatus(val: any[]): any {
-    this.reportInfo = reportInfo;
     this.reportInfo.title = "worked over time status";
-    this.reportInfo.multi = workedOTStatus;
   }
 
   propertyChange(event: _propertySet) {
