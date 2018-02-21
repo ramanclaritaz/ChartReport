@@ -5,36 +5,25 @@ import { NgModule } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FormsModule } from "@angular/forms";
 import { HttpModule } from '@angular/http';
-import { httpService } from "./httpService";
-
-
 import { AppComponent } from './app.component';
-import { HBarChart } from './BarChart/HBarChart';
-import { GroupVBarChart } from './BarChart/GroupVBarChart';
-import { GroupHBarChart } from './BarChart/GroupHBarChart';
-import { VBarChart } from './BarChart/VBarChart';
-import { StackedVBarChart } from './BarChart/StackedVBarChart';
-import { StackedHBarChart } from './BarChart/StackedHBarChart';
-import { PieChart } from './PieChart/PieChart';
-import { AdvPieChart } from './PieChart/AdvPieChart';
-import { GridPieChart } from './PieChart/GridPieChart';
-import { ChartReport } from './Reports/SingleChartReport';
-import { Property } from './Reports/Property';
-import { MultiChartReport } from './Reports/MultiChartReport';
-import { RecordReport } from './Reports/RecordReport';
-import { timeOfficeService } from './sharedData/timeOffice.service';
-import { commonServices } from './sharedData/common.service';
-import { sharedData } from './sharedData/data';
+import { HBarChart, VBarChart, GroupHBarChart, GroupVBarChart, StackedVBarChart, StackedHBarChart } from './BarChart/_index';
+import { PieChart, AdvPieChart, GridPieChart } from './PieChart/_index';
+import {  RecordReport,  chartComponent } from './Reports/_index';
+import { sharedData } from './sharedData/_index';
+import { httpService, timeOfficeService, commonServices } from './_services/_index';
+
+import { AlertComponent, property, search } from './_derectives/_index'
+import { AlertService } from './_services/_index'
 
 
 const appRoutes: Routes = [
   { path: "holidaylist/:id", component: RecordReport },
-  { path: "availableleave/:id", component: ChartReport },
-  { path: "leavestatus/:id/:fdate/:tdate", component: ChartReport },
+  { path: "availableleave/:id", component: chartComponent },
+  { path: "leavestatus/:id/:fdate/:tdate", component: chartComponent },
   { path: "holidaylist", component: RecordReport },
-  { path: "otstatus", component: MultiChartReport },
-  { path: "attendance/:fdate/:tdate", component: RecordReport }
-  // { path: '', redirectTo: 'availableleave/:id', pathMatch: 'full' }
+  { path: "otstatus", component: chartComponent },
+  { path: "attendance/:fdate/:tdate", component: RecordReport },
+  // { path: "availableleave/:data", component: chartComponent }
 ];
 
 @NgModule({
@@ -50,18 +39,19 @@ const appRoutes: Routes = [
     PieChart,
     AdvPieChart,
     GridPieChart,
-    ChartReport,
-    MultiChartReport,
-    Property
+    chartComponent,
+    property,
+    search,
+    AlertComponent
   ],
   imports: [BrowserModule, BrowserAnimationsModule, NgxChartsModule, HttpModule,
     RouterModule.forRoot(appRoutes), FormsModule
   ],
 
-  providers: [httpService,timeOfficeService,commonServices,sharedData],
+  providers: [httpService, timeOfficeService, commonServices, sharedData, AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 
 
- }
+}

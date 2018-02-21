@@ -1,5 +1,5 @@
 import { Component, NgModule, Input } from '@angular/core';
-import { _reportInfo } from '../sharedData/data';
+import { _reportInfo } from '../_models/_index';
 
 @Component({
   selector: 'GridPieChart',

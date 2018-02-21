@@ -1,6 +1,6 @@
 import { Component, Input,OnInit } from '@angular/core'
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { _reportInfo } from '../sharedData/data';
+import { _reportInfo } from '../_models/_index';
 
 @Component({
   selector: 'VBarChart',
@@ -28,10 +28,8 @@ export class VBarChart implements OnInit {
   }
   ngOnInit()
   {
-    console.log(this.reportInfo);
   }
   onSelect(event) {
-    console.log(event);
   }
 }
 

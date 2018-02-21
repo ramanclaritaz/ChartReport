@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { _reportInfo, sharedData, _propertySet } from '../sharedData/data';
+import { Component, OnInit } from '@angular/core';
+import { sharedData } from '../sharedData/data';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { validateConfig } from '@angular/router/src/config';
 import { retry } from 'rxjs/operators/retry';
-import { commonServices } from '../sharedData/common.service';
+import { commonServices } from '../_services/_index';
+import { _propertySet, _reportInfo, _searchData } from '../_models/_index';
 
 
 @Component({
@@ -11,17 +12,19 @@ import { commonServices } from '../sharedData/common.service';
   templateUrl: "../Reports/RecordReport.html",
   providers: [commonServices]
 })
-export class RecordReport {
+export class RecordReport implements OnInit {
   holiday: any[];
   reportInfo: _reportInfo;
   paramId: any;
   params: any;
   propertyValue: _propertySet;
+  searchData:_searchData;
   constructor(private route: ActivatedRoute, private router: Router, private commonservice: commonServices, private comVar: sharedData) {
 
-    this.params = this.route.params;
   }
-  Oninit() {
+
+  ngOnInit()
+  {
     this.propertyValue = this.comVar.PropertySet;
     this.propertyValue.typeOfReports = this.comVar.ListsType
     this.propertyValue.graph = false;
@@ -38,6 +41,23 @@ export class RecordReport {
       this.reportInfo.title = "Attendance report from ( " + this.params[1].path + " to " + this.params[2].path + " )";
     }
   }
+  setSearchData(val: any) {
+    var obj = JSON.parse(val);
+    let data: _searchData = { filter: true }
+    for (let i = 0; i < obj.length; i++) {
+      if (i == 1)
+        data.empNo = obj[i].path;
+      else if (i == 2)
+        data.fromDate = obj[i].path;
+      else if (i == 3)
+        data.toDate = obj[i].path;
+      else if (i == 4)
+        data.approverNo = obj[i].path;
+    }
+    this.searchData = data;
+
+  }
+
   propertyChange(event: _propertySet) {
     this.reportInfo.showLegend = (event.showLegend == 1 ? true : false);
   }

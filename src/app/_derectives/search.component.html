@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-lg-3">
+    <div class="form-group">
+      <label for="fromDate">From Date</label>
+      <input class="form-control" type="date" id="fromDate" name="fromDate" [(ngModel)]='data.fromDate'>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="form-group">
+      <label for="toDate">To Date</label>
+      <input class="form-control" type="date" id="toDate" name="toDate" [(ngModel)]='data.toDate'>
+    </div>
+  </div>
+</div>
+<div class="btn-group-sm">
+  <button type="submit" class="btn-primary btn" (click)='submit(data)'>Apply filter</button>
+  <button type="reset" class="btn-default btn" [disabled]='data.filter' (click)="reset()">Clear</button>
+</div>

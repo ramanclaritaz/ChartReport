@@ -1,0 +1,36 @@
+<div style="padding-top: 10px;margin: 5px">
+
+  <app-search [searchData]='searchData' *ngIf='showFilter' (searchReset)="reset()" (searchSubmit)="submit($event)"></app-search>
+
+
+</div>
+<div *ngIf='result'>
+  <app-property [propertyset]='propertyValue' (propertyChange)="propertyChange($event)" (exportChange)="exportChange($event)"></app-property>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>
+        <strong> {{reportInfo.title}}</strong>
+      </h4>
+    </div>
+    <div class="panel-body">
+      <div *ngIf="reportInfo.isSingle">
+        <VBarChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==1)'></VBarChart>
+        <HBarChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==2)'></HBarChart>
+        <PieChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==3)'></PieChart>
+        <AdvPieChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==4)'></AdvPieChart>
+        <GridPieChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==5)'></GridPieChart>
+      </div>
+      <div *ngIf="!reportInfo.isSingle">
+        <VBarChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==1)'></VBarChart>
+        <HBarChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==2)'></HBarChart>
+        <PieChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==3)'></PieChart>
+        <AdvPieChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==4)'></AdvPieChart>
+        <GridPieChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==5)'></GridPieChart>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div *ngIf='!result'>
+  <h1> No data found</h1>
+</div>

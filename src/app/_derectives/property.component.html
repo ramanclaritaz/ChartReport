@@ -1,6 +1,5 @@
-<form>
   <div class="row">
-    <div class="col-lg-3" *ngIf='propertySet.graph' >
+    <div class="col-lg-3" *ngIf='propertySet.graph'>
       <div class="form-group">
         <label for="formGroupExampleInput">Type of Chart</label>
         <select class="form-control col-lg-4" name="formGroupExampleInput" [(ngModel)]="propertySet.typeOfReport" (ngModelChange)='valueChange(propertySet)'>
@@ -34,6 +33,5 @@
         </select>
       </div>
     </div>
-
   </div>
-</form>
+

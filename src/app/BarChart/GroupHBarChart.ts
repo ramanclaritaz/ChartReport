@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { _reportInfo } from '../sharedData/data';
+import { _reportInfo } from '../_models/_index';
 
 @Component({
   selector: 'GroupHBarChart',

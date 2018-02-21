@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { environment } from "../app/app.environment";
+import { environment } from "../app.environment";
 import { RequestOptions, Request, RequestOptionsArgs, Response, Http, Headers } from "@angular/http";
 import { Observable } from "rxjs/Rx";
 
@@ -10,8 +10,8 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class httpService {
-  headers:any;
-  constructor( @Inject(Http) private http: Http) {
+  headers: any;
+  constructor(@Inject(Http) private http: Http) {
     this.headers = new Headers();
   }
 
