@@ -34,7 +34,7 @@ export class chartComponent implements OnInit {
 
     this.route.url.subscribe(val => {
       this.result = false;
-      this.setSearchData(JSON.stringify(val));
+      this.setSearchData(val);
       // this.searchData.filter = false;
       this.params = val[0].path
       this.callBack(this.params);
@@ -59,20 +59,8 @@ export class chartComponent implements OnInit {
     }
   }
   setSearchData(val: any) {
-    var obj = JSON.parse(val);
-    let data: _searchData = { filter: true }
-    for (let i = 0; i < obj.length; i++) {
-      if (i == 1)
-        data.empNo = obj[i].path;
-      else if (i == 2)
-        data.fromDate = obj[i].path;
-      else if (i == 3)
-        data.toDate = obj[i].path;
-      else if (i == 4)
-        data.approverNo = obj[i].path;
-    }
-    this.searchData = data;
-
+    this.searchData = JSON.parse(val[1].path);
+    this.searchData.filter = true;
   }
   getLeaveAppliedStatus() {
     this.timeOffice.getLeaveStatus(this.searchData).subscribe((res: any) => {

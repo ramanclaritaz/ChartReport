@@ -11,7 +11,9 @@ export interface _searchData {
   fromDate?: string;
   toDate?: string;
   approverNo?: string;
-  filter?:boolean;
+  filter?: boolean;
+  location?: string;
+  estbl: string;//elasticsearch index name
 }
 
 

@@ -3,9 +3,7 @@ import { DialogService } from '../_services/confirm.service'
 
 @Component({
   selector: 'confirm-dialog-modal',
-  template: `
-
-  `
+  templateUrl: './confirm.component.html'
 })
 export class ConfirmDialog {
   constructor(public dialogService: DialogService) { }

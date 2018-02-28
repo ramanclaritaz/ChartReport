@@ -3,27 +3,29 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Routes, RouterModule } from '@angular/router'
 import { NgModule } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { LoadingModule } from 'ngx-loading';
 import { FormsModule } from "@angular/forms";
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { HBarChart, VBarChart, GroupHBarChart, GroupVBarChart, StackedVBarChart, StackedHBarChart } from './BarChart/_index';
 import { PieChart, AdvPieChart, GridPieChart } from './PieChart/_index';
-import {  RecordReport,  chartComponent } from './Reports/_index';
+import { RecordReport, chartComponent } from './Reports/_index';
 import { sharedData } from './sharedData/_index';
 import { httpService, timeOfficeService, commonServices } from './_services/_index';
-
-import { AlertComponent, property, search } from './_derectives/_index'
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
+import { AlertComponent, property, search, ConfirmDialog, loading } from './_derectives/_index'
 import { AlertService } from './_services/_index'
 
 
 const appRoutes: Routes = [
-  { path: "holidaylist/:id", component: RecordReport },
-  { path: "availableleave/:id", component: chartComponent },
-  { path: "leavestatus/:id/:fdate/:tdate", component: chartComponent },
-  { path: "holidaylist", component: RecordReport },
-  { path: "otstatus", component: chartComponent },
-  { path: "attendance/:fdate/:tdate", component: RecordReport },
-  // { path: "availableleave/:data", component: chartComponent }
+  { path: "holidaylist/:searchdata", component: RecordReport },
+  { path: "availableleave/:searchdata", component: chartComponent },
+  { path: "leavestatus/:searchdata", component: chartComponent },
+  { path: "holidaylist/:searchdata", component: RecordReport },
+  { path: "otstatus/:searchdata", component: chartComponent },
+  { path: "attendanceList/:searchdata", component: RecordReport },
+  { path: "attendance/:searchdata", component: chartComponent }
 ];
 
 @NgModule({
@@ -42,10 +44,10 @@ const appRoutes: Routes = [
     chartComponent,
     property,
     search,
-    AlertComponent
+    AlertComponent, ConfirmDialog, loading
   ],
-  imports: [BrowserModule, BrowserAnimationsModule, NgxChartsModule, HttpModule,
-    RouterModule.forRoot(appRoutes), FormsModule
+  imports: [BrowserModule, BrowserAnimationsModule, NgxChartsModule, HttpModule,LoadingModule,
+    RouterModule.forRoot(appRoutes), FormsModule,AngularFontAwesomeModule,MultiselectDropdownModule
   ],
 
   providers: [httpService, timeOfficeService, commonServices, sharedData, AlertService],

@@ -1,3 +1,5 @@
 export * from './alert.component'
 export * from './property.component'
 export * from './search.component'
+export * from './confirm.component'
+export * from './loading.component'

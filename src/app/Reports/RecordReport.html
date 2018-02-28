@@ -1,24 +1,43 @@
-<div class="panel">
-  <div class="panel-body">
-    <table>
-      <thead>
-        <tr *ngFor="let item of headerList">
-          <th>S.No</th>
-          <th  *ngIf="item.displayed">
-            {{item.displayName}}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of dataList let i=index">
-          <td>{{i+1}}</td>
-          <td>
-            {{item}}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div style="padding-top: 10px;margin: 5px">
+  <app-search [searchData]='searchData' *ngIf='showFilter' (searchReset)="reset()" (searchSubmit)="submit($event)"></app-search>
+</div>
+<div>
+  <app-property [propertyset]='propertyValue' (propertyChange)="propertyChange($event)" (exportChange)="exportChange($event)"></app-property>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>
+        <strong> {{reportInfo.title}}</strong>
+      </h4>
+    </div>
+    <div class="panel-body">
+      <div class="form-group col-lg-6">
+        <label class="control-label" for="selecthearder">Select</label>
+        <ss-multiselect-dropdown [options]="myOptions" [(ngModel)]="optionsModel" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+      </div>
+      <table class="table-responsive table table-bordered">
+        <thead>
+          <tr>
+            <th *ngFor="let item of headerList">
+              <div class="pull-left">
+                {{item.displayName}}
+                <a (click)="change(item)">
+                  <i class="glyphicon glyphicon-remove" style="
+                    top: 3px !important;
+                    margin-left: 7px;
+                "></i>
+                </a>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let items of dataList let i=index">
+          <tr *ngFor="let item of headerList">
+            <td>
+              {{items[item.propertyName]}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
-
-

@@ -17,76 +17,76 @@ export interface _attendance {
 
 export const _attenList: _displayProperty[] = [
   {
-    DisplayName: "Employee Name",
+    displayName: "Employee Name",
     propertyName: "employeename",
     displayed: true,
     index: 0
   }
   ,
   {
-    DisplayName: "Employee Number",
+    displayName: "Employee Number",
     propertyName: "employeenumber",
     displayed: true,
     index: 1
   }
   ,
   {
-    DisplayName: "Date",
+    displayName: "Date",
     propertyName: "attendancedate",
     displayed: true,
     index: 2
   }
   ,
   {
-    DisplayName: "Absent",
+    displayName: "Absent",
     propertyName: "absent",
     displayed: true,
     index: 3
   }
   ,
   {
-    DisplayName: "in Time",
+    displayName: "in Time",
     propertyName: "intime",
     displayed: true,
     index: 4
   }
   ,
   {
-    DisplayName: "out Time",
+    displayName: "out Time",
     propertyName: "outtime",
     displayed: true,
     index: 5
   }
   ,
   {
-    DisplayName: "Day",
+    displayName: "Day",
     propertyName: "day",
     displayed: true,
     index: 6
   }
   ,
   {
-    DisplayName: "Loss of pay",
+    displayName: "Loss of pay",
     propertyName: "lop",
     displayed: true,
     index: 7
   },
   {
-    DisplayName: "Late",
+    displayName: "Late",
     propertyName: "latetime",
     displayed: false,
     index: 8
   }
   ,
   {
-    DisplayName: "Early",
+    displayName: "Early",
     propertyName: "earlytime",
     displayed: false,
     index: 9
   }
   ,
   {
-    DisplayName: "Week Off",
+    displayName: "Week Off",
     propertyName: "weekoff",
     displayed: false,
     index: 10
