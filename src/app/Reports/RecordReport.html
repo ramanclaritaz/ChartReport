@@ -1,43 +1,79 @@
-<div style="padding-top: 10px;margin: 5px">
-  <app-search [searchData]='searchData' *ngIf='showFilter' (searchReset)="reset()" (searchSubmit)="submit($event)"></app-search>
-</div>
-<div>
-  <app-property [propertyset]='propertyValue' (propertyChange)="propertyChange($event)" (exportChange)="exportChange($event)"></app-property>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>
-        <strong> {{reportInfo.title}}</strong>
-      </h4>
-    </div>
-    <div class="panel-body">
-      <div class="form-group col-lg-6">
-        <label class="control-label" for="selecthearder">Select</label>
-        <ss-multiselect-dropdown [options]="myOptions" [(ngModel)]="optionsModel" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
-      </div>
-      <table class="table-responsive table table-bordered">
-        <thead>
-          <tr>
-            <th *ngFor="let item of headerList">
-              <div class="pull-left">
-                {{item.displayName}}
-                <a (click)="change(item)">
-                  <i class="glyphicon glyphicon-remove" style="
-                    top: 3px !important;
-                    margin-left: 7px;
-                "></i>
-                </a>
-              </div>
-            </th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let items of dataList let i=index">
-          <tr *ngFor="let item of headerList">
-            <td>
-              {{items[item.propertyName]}}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<br/>
+<div class="row">
+  <div class="col-lg-3 pull-right">
+    <button class="btn btn-default" (click)="filter.open()">
+      <span class="glyphicon glyphicon-filter"></span> Filter
+    </button>
   </div>
 </div>
+<div class="row">
+  <div class="form-group col-lg-3 ">
+    <label class="control-label" for="selecthearder">Select</label>
+    <ss-multiselect-dropdown class="form-control" [options]="myOptions" [(ngModel)]="optionsModel" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+  </div>
+  <div class="form-group col-lg-3 pull-right">
+    <label class="control-label" for="selecthearder">Download as</label>
+    <select class="form-control" [(ngModel)]="export" (ngModelChange)="exportChange(export)">
+      <option value="0" selected>Select here..</option>
+      <option value="1">PDF</option>
+      <option value="2">CSV</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-lg-12">
+      <div id="reportData">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>
+              <strong> {{reportInfo.title}}</strong>
+            </h4>
+          </div>
+          <div class="panel-body">
+            <table class="table-responsive table table-bordered">
+              <thead>
+                <tr>
+                  <th *ngFor="let item of headerList">
+                    <div class="pull-left">
+                      {{item.displayName}}
+                      <a *ngIf="headerList.length>1" (click)="change(item)">
+                        <i class="glyphicon glyphicon-remove" style="
+                    top: 3px !important;margin-left: 7px;"></i>
+                      </a>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let items of dataList let i=index">
+                  <td *ngFor="let item of headerList">
+                    <label *ngIf='item.propertyType==0'>
+                      {{items[item.propertyName] | date:'dd-MMM-yyyy'}}
+                    </label>
+                    <label *ngIf='item.propertyType==1'>
+                      {{items[item.propertyName] | date:'hh:mm a'}}
+                    </label>
+                    <label *ngIf='item.propertyType==2 || item.propertyType==3 || item.propertyType==4'>
+                      {{items[item.propertyName]}}
+                    </label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <modal #filter (onSubmit)="applyfilter(filter)" submitButtonLabel="Apply" modalClass="modal-lg modal-sm any-other-css-class"
+    [hideCloseButton]="false" [closeOnEscape]="true" [closeOnOutsideClick]="false">
+    <modal-header>
+      <h3>Filter</h3>
+    </modal-header>
+    <modal-content>
+      <app-search [searchData]="searchData" (searchSubmit)="applyfilter(filter)"></app-search>
+    </modal-content>
+    <modal-footer>
+      <input type="button" (click)="reset(filter)" class="btn btn-default pull-left" value="Clear">
+    </modal-footer>
+  </modal>

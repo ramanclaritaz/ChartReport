@@ -1,4 +1,4 @@
-import { Component, NgModule, Input } from '@angular/core';
+import { Component, NgModule, Input, Output, EventEmitter } from '@angular/core';
 import { _reportInfo } from '../_models/_index';
 
 @Component({
@@ -14,10 +14,13 @@ import { _reportInfo } from '../_models/_index';
 })
 export class GridPieChart {
   @Input('reportInfo') reportInfo: _reportInfo
+  @Output() select = new EventEmitter<_reportInfo>();
+
   constructor() {
-  }
-  onSelect(event) {
-    console.log(event);
+
   }
 
+  onSelect(event) {
+    this.select.emit(event);
+  }
 }

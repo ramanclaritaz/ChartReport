@@ -1,18 +1,47 @@
 <div class="row">
   <div class="col-lg-3">
     <div class="form-group">
-      <label for="fromDate">From Date</label>
-      <input class="form-control" type="date" id="fromDate" name="fromDate" [(ngModel)]='data.fromDate'>
+      <label for="header">Select field</label>
+      <select id="header" class="form-control" [(ngModel)]="Data.selectedField" (ngModelChange)="headerChange()">
+        <option value="-1">Select here..</option>
+        <option *ngFor="let item of Data.headerList" [value]="item.index">{{item.displayName}}</option>
+      </select>
     </div>
   </div>
-  <div class="col-lg-3">
+  <div class="col-lg-3" *ngIf="Data.selectedField!=-1">
     <div class="form-group">
-      <label for="toDate">To Date</label>
-      <input class="form-control" type="date" id="toDate" name="toDate" [(ngModel)]='data.toDate'>
+      <label for="header">Select field</label>
+      <select class="form-control" aria-placeholder="Opertors" [(ngModel)]="Data.selectedOpertor" (ngModelChange)="operatorChange()">
+        <option value="0" selected>Select here..</option>
+        <option *ngFor="let item of opertorsList" [value]="item.id">{{item.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-lg-4" >
+    <div class="form-group" *ngIf="(visibilty==1)">
+      <label for="operator">Values</label>
+      <input class="form-control" type="text" placeholder="values" [(ngModel)]="Data.value">
+    </div>
+    <div class="form-group" *ngIf="(visibilty==2)">
+      <label for="operator">Values</label>
+      <input  class="form-control" type="number" placeholder="values" [(ngModel)]="Data.value">
+    </div>
+    <div class="form-group" *ngIf="(visibilty==3)">
+      <label for="operator">Date (dd-MM-yyyy)</label>
+      <input class="form-control" type="text" placeholder="date (dd-MM-yyyy)" [(ngModel)]="Data.date">
+    </div>
+    <div class="form-group" *ngIf="(visibilty==4)">
+      <input class="form-control" type="text" placeholder="from date (dd-MM-yyyy)" [(ngModel)]="Data.fromDate">
+      <br />
+      <input class="form-control" type="text" placeholder="to date (dd-MM-yyyy)" [(ngModel)]="Data.toDate">
     </div>
   </div>
 </div>
-<div class="btn-group-sm">
-  <button type="submit" class="btn-primary btn" (click)='submit(data)'>Apply filter</button>
-  <button type="reset" class="btn-default btn" [disabled]='data.filter' (click)="reset()">Clear</button>
-</div>
+<!-- <div class="row">
+  <div class="col-lg-12">
+    <div class="btn-group-sm pull-right">
+      <button type="submit" class="btn-primary btn" (click)='submit(Data)'>Apply filter</button>
+      <button type="reset" class="btn-default btn" (click)="reset()">Clear</button>
+    </div>
+  </div>
+</div> -->

@@ -22,11 +22,11 @@ export class timeOfficeService {
   getAvailableLeaveList(searchData: any) {
     return this._http.post('availableleave', searchData);
   }
-  getLeaveStatus(searchData: any) {
-    return this._http.post('leavestatus', searchData);
+  getStatus(searchData: any) {
+    return this._http.post('status', searchData);
   }
-  getLeaveList(searchData: any) {
-    return this._http.post('leavelist', searchData);
+  getList(searchData: any) {
+    return this._http.post('list', searchData);
   }
 
 }

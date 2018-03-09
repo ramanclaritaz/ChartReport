@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input, EventEmitter, Output } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { _reportInfo } from '../_models/_index';
 
@@ -23,9 +23,14 @@ import { _reportInfo } from '../_models/_index';
 })
 export class StackedHBarChart {
   @Input('reportInfo') reportInfo: _reportInfo
+  @Output() select = new EventEmitter<_reportInfo>();
+
   constructor() {
+
   }
+
   onSelect(event) {
-    console.log(event);
+    this.select.emit(event);
   }
+
 }

@@ -16,16 +16,25 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { AlertComponent, property, search, ConfirmDialog, loading } from './_derectives/_index'
 import { AlertService } from './_services/_index'
-
+import { ModalModule } from "ng2-modal";
+import { NgDatepickerModule } from 'ng2-datepicker';
 
 const appRoutes: Routes = [
-  { path: "holidaylist/:searchdata", component: RecordReport },
-  { path: "availableleave/:searchdata", component: chartComponent },
-  { path: "leavestatus/:searchdata", component: chartComponent },
-  { path: "holidaylist/:searchdata", component: RecordReport },
-  { path: "otstatus/:searchdata", component: chartComponent },
-  { path: "attendanceList/:searchdata", component: RecordReport },
-  { path: "attendance/:searchdata", component: chartComponent }
+  { path: "record/:id", component: RecordReport, },
+  { path: "attendanceList", component: RecordReport },
+  { path: "appliedcompoffList", component: RecordReport, },
+  { path: "appliedLeaveList", component: RecordReport },
+  { path: "holidaylist", component: RecordReport, },
+  { path: "leavelist", component: RecordReport },
+  { path: "employeeDetail", component: RecordReport, },
+  { path: "personaldetails", component: RecordReport },
+
+  { path: "chart/:id", component: chartComponent },
+  { path: "compoffdetailstatus", component: chartComponent },
+  { path: "availableleave", component: chartComponent },
+  { path: "leavestatus", component: chartComponent },
+  { path: "otstatus", component: chartComponent },
+  { path: "attendance", component: chartComponent }
 ];
 
 @NgModule({
@@ -46,8 +55,16 @@ const appRoutes: Routes = [
     search,
     AlertComponent, ConfirmDialog, loading
   ],
-  imports: [BrowserModule, BrowserAnimationsModule, NgxChartsModule, HttpModule,LoadingModule,
-    RouterModule.forRoot(appRoutes), FormsModule,AngularFontAwesomeModule,MultiselectDropdownModule
+  imports: [BrowserModule,
+    BrowserAnimationsModule,
+    NgxChartsModule, HttpModule,
+    LoadingModule,
+    ModalModule,
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    AngularFontAwesomeModule,
+    MultiselectDropdownModule,
+    NgDatepickerModule
   ],
 
   providers: [httpService, timeOfficeService, commonServices, sharedData, AlertService],
@@ -55,5 +72,8 @@ const appRoutes: Routes = [
 })
 export class AppModule {
 
+  constructor() {
+
+  }
 
 }

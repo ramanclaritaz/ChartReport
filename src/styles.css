@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+.dropdown-toggle {
+  margin: 0px;
+  padding: 0px;
+  width: 186px;
+  background-color: #fff !important;
+  border: 0px !important;
+  transition: unset;
+}
+.caret {
+  margin-left: 123px !important;
+  white-space: nowrap;
+  display: inline-block;
+}

@@ -27,12 +27,15 @@ export class commonServices {
       quoteStrings: '"',
       decimalseparator: '.',
       showLabels: true,
-      showTitle: false,
+      showTitle: true,
       useBom: true
     };
     var csv = new Angular2Csv(data, fileName, options);
   }
   private HtmltoPDF(fileName: string, element?: string) {
+
+    let data=document.getElementById(element);
+    console.log(data);
     html2canvas((element == null || element == undefined) ? document.body : document.getElementById(element)).then((canvas: HTMLCanvasElement) => {
       const pdf = new jsPDF('l', 'pt', 'a4');
       console.log(pdf);

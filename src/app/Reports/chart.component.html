@@ -1,9 +1,3 @@
-<div style="padding-top: 10px;margin: 5px">
-
-  <app-search [searchData]='searchData' *ngIf='showFilter' (searchReset)="reset()" (searchSubmit)="submit($event)"></app-search>
-
-
-</div>
 <div *ngIf='result'>
   <app-property [propertyset]='propertyValue' (propertyChange)="propertyChange($event)" (exportChange)="exportChange($event)"></app-property>
   <div class="panel panel-default">
@@ -12,20 +6,20 @@
         <strong> {{reportInfo.title}}</strong>
       </h4>
     </div>
-    <div class="panel-body">
+    <div class="panel-body" id="reportData">
       <div *ngIf="reportInfo.isSingle">
-        <VBarChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==1)'></VBarChart>
-        <HBarChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==2)'></HBarChart>
-        <PieChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==3)'></PieChart>
-        <AdvPieChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==4)'></AdvPieChart>
-        <GridPieChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==5)'></GridPieChart>
+        <VBarChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==1)' (select)="onSelect($event)"></VBarChart>
+        <HBarChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==2)' (select)="onSelect($event)"></HBarChart>
+        <PieChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==3)' (select)="onSelect($event)"></PieChart>
+        <AdvPieChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==4)' (select)="onSelect($event)"></AdvPieChart>
+        <GridPieChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==5)' (select)="onSelect($event)"></GridPieChart>
       </div>
       <div *ngIf="!reportInfo.isSingle">
-        <VBarChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==1)'></VBarChart>
-        <HBarChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==2)'></HBarChart>
-        <PieChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==3)'></PieChart>
-        <AdvPieChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==4)'></AdvPieChart>
-        <GridPieChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==5)'></GridPieChart>
+        <VBarChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==1)' (select)="onSelect($event)"></VBarChart>
+        <HBarChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==2)' (select)="onSelect($event)"></HBarChart>
+        <PieChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==3)' (select)="onSelect($event)"></PieChart>
+        <AdvPieChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==4)' (select)="onSelect($event)"></AdvPieChart>
+        <GridPieChart [reportInfo]="reportInfo" *ngIf='(propertyValue.typeOfReport==5)' (select)="onSelect($event)"></GridPieChart>
       </div>
 
     </div>
